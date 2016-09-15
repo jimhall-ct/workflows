@@ -48,9 +48,16 @@ gulp.task('compass', function() {
       .on('error', function(error) {
         console.log(error);
       })
-    // gulp dest doesn't seem to be necessary since compass
+    // gulp.dest doesn't seem to be necessary since compass
     // outputs to css property in config settings above
     //.pipe(gulp.dest('builds/development/css'))
+});
+
+// Watch Task to update files when there is a change
+gulp.task('watch', function() {
+  gulp.watch(coffeeSources, ['coffee']);
+  gulp.watch(jsSources, ['js']);
+  gulp.watch('components/sass/*.scss', ['compass']);
 });
 
 // Setup default tasks ($> gulp) to run when launching gulp without arguments
