@@ -4,11 +4,12 @@
   "description": "Workflow web course on Lynda.com",
   "repository": {
     "type": "git",
-    "url": "***.git"
+    "url": "https://github.com/jimhall-ct/workflows.git"
   },
   "author": "Jim Hall",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-coffee": "^2.3.2",
     "gulp-util": "^3.0.7"
   }
 }
