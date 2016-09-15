@@ -1,6 +1,6 @@
 # Workflows Course
 
-This is a web workflow course for learning Git, Sass, Gulp, Browserify, Compass, etc.
+This is my files for taking web workflow course for learning Git, Sass, Gulp, Browserify, Compass, etc. on Lynda.com, authored by Ray Villalobos.
 
 ### Tools Used
 * Git
