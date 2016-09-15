@@ -1,3 +1,10 @@
 # Workflows Course
 
-This is a course for learning web workflows using Git, Sass, Gulp, and other technologies on Lynda.com
+This is a web workflow course for learning Git, Sass, Gulp, Browserify, Compass, etc.
+
+### Tools Used
+* Git
+* SASS
+* Gulp
+* Webpack (instead of Browserify)
+* Compass
