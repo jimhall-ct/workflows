@@ -308,23 +308,25 @@ section {
 .ontour h1 {
   color: #4d354c;
   font-size: 3em;
+  padding-bottom: 5px;
   bottom: 10px;
   right: 10%;
 }
-/* line 94, ../../../components/sass/_modules.scss */
+/* line 95, ../../../components/sass/_modules.scss */
 .ontour h2 {
   font-size: 1.8em;
   color: #8D8862;
   border-top: 1px solid #8D8862;
-  padding-top: 5px;
+  padding-top: 10px;
 }
-/* line 101, ../../../components/sass/_modules.scss */
+/* line 102, ../../../components/sass/_modules.scss */
 .ontour h3 {
   font-size: 1.3em;
   color: #6b4a69;
+  padding-top: 5px;
   padding-bottom: 5px;
 }
-/* line 107, ../../../components/sass/_modules.scss */
+/* line 109, ../../../components/sass/_modules.scss */
 .ontour img {
   float: right;
   -moz-border-radius: 50%;
@@ -334,6 +336,10 @@ section {
   width: 20%;
   min-width: 120px;
   max-width: 160px;
+}
+/* line 118, ../../../components/sass/_modules.scss */
+.ontour p {
+  padding-bottom: 25px;
 }
 
 /* line 4, ../../../components/sass/_pixgrid.scss */
