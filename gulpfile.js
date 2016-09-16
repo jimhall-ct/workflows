@@ -2,11 +2,12 @@
 var gulp = require('gulp'),
     util = require('gulp-util'),
     gulpif = require('gulp-if'),
+    coffee = require('gulp-coffee'),
     concat = require('gulp-concat'),
     browserify = require('gulp-browserify'),
     uglify = require('gulp-uglify'),
     compass = require('gulp-compass'),
-    coffee = require('gulp-coffee'),
+    htmlmin = require('gulp-htmlmin'),
     webserver = require('gulp-connect');
 
 var build,
@@ -74,6 +75,13 @@ gulp.task('compass', function() {
 // Used by Watch task for reloading modifications
 gulp.task('html', function() {
   gulp.src(htmlSources)
+  .pipe(gulpif(build === 'production', htmlmin({
+      removeComments: true,
+      collapseWhitespace: true
+      // Full List of options
+      // https://github.com/kangax/html-minifier
+  })))
+  .pipe(gulpif(build === 'production', gulp.dest(outputDir)))
   .pipe(webserver.reload())
 });
 
@@ -102,9 +110,6 @@ gulp.task('webserver', function() {
 // Task for copying dev files to prod directories
 gulp.task('prodFiles', function() {
   console.log("Copying files from development to production...")
-  // Copy HTML files to production directory
-  gulp.src(htmlSources)
-  .pipe(gulp.dest('builds/production'))
   // Copy Image files to production directory
   gulp.src(imageSources)
   .pipe(gulp.dest('builds/production/images'))
@@ -130,5 +135,5 @@ gulp.task('productionSetup', function() {
   util.log(util.colors.white.bold.bgRed("PRODUCTION CODE - DO NOT EDIT FILES"));
 });
 
-gulp.task('production', ['productionSetup', 'prodFiles', 'coffee', 'js', 'compass', 'webserver']);
+gulp.task('production', ['productionSetup', 'prodFiles', 'html', 'coffee', 'js', 'compass', 'webserver']);
 gulp.task('development', ['default']);
