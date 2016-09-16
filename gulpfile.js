@@ -7,6 +7,7 @@ var gulp = require('gulp'),
     browserify = require('gulp-browserify'),
     uglify = require('gulp-uglify'),
     compass = require('gulp-compass'),
+    jsonminify = require('gulp-jsonminify'),
     htmlmin = require('gulp-htmlmin'),
     webserver = require('gulp-connect');
 
@@ -88,6 +89,8 @@ gulp.task('html', function() {
 // Used by Watch task for reloading modifications
 gulp.task('json', function() {
   gulp.src(jsonSources)
+  .pipe(gulpif(build === 'production', jsonminify()))
+  .pipe(gulpif(build === 'production', gulp.dest(outputDir + 'js')))
   .pipe(webserver.reload())
 });
 
@@ -113,9 +116,6 @@ gulp.task('prodFiles', function() {
   // Copy Image files to production directory
   gulp.src(imageSources)
   .pipe(gulp.dest('builds/production/images'))
-  // Copy JSON files to production directory
-  gulp.src(jsonSources)
-  .pipe(gulp.dest('builds/production/js'))
 });
 
 // Setup default tasks ($> gulp) to run when launching gulp without arguments
@@ -135,5 +135,5 @@ gulp.task('productionSetup', function() {
   util.log(util.colors.white.bold.bgRed("PRODUCTION CODE - DO NOT EDIT FILES"));
 });
 
-gulp.task('production', ['productionSetup', 'prodFiles', 'html', 'coffee', 'js', 'compass', 'webserver']);
+gulp.task('production', ['productionSetup', 'prodFiles', 'html', 'json', 'coffee', 'js', 'compass', 'webserver']);
 gulp.task('development', ['default']);
